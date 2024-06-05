@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class OrderEditRequest {
+public class OrderEditRequest implements ProcessorMember {
     private Long id;
     private String product;
     private int quantity;

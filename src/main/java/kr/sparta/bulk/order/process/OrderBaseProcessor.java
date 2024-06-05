@@ -1,10 +1,12 @@
 package kr.sparta.bulk.order.process;
 
+import kr.sparta.bulk.order.model.ProcessorMember;
+
 import java.util.List;
 import java.util.random.RandomGenerator;
 import java.util.stream.IntStream;
 
-public abstract class OrderBaseProcessor <T> implements OrderRandomProcessable {
+public abstract class OrderBaseProcessor <T extends ProcessorMember> implements OrderRandomProcessable {
     private static final RandomGenerator gen = RandomGenerator.of("L128X256MixRandom");
     protected List<T> list;
 

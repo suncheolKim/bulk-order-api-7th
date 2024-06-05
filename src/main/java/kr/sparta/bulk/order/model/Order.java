@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity(name = "`order`")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+public class Order implements ProcessorMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
