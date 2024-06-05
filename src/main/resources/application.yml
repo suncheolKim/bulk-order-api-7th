@@ -1,0 +1,32 @@
+server:
+    port: 8080
+
+spring:
+    application:
+        name: bulk-order-api
+
+    datasource:
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        url: jdbc:log4jdbc:mariadb://192.168.1.20:3306/bulkorder
+        username: ${username}
+        password: ${password}
+
+    jpa:
+        database: MYSQL
+        hibernate:
+            ddl-auto: none
+
+    sql:
+        init:
+            mode: always
+            schema-locations: classpath:schema.sql
+
+logging:
+    level:
+        root: INFO
+        jdbc: OFF
+        jdbc.audit: OFF
+        jdbc.connection: OFF
+        jdbc.resultset: OFF
+        jdbc.resultsettable: INFO
+        jdbc.sqlonly: INFO
