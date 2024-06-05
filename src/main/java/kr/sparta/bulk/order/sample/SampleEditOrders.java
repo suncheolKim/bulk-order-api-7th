@@ -36,7 +36,6 @@ public class SampleEditOrders {
                     .quantity(newQuantity)
                     .customerName(order.getCustomerName())
                     .customerAddress(newAddress)
-                    .status(order.getStatus())
                     .build();
 
             editOrders.add(editedOrder);

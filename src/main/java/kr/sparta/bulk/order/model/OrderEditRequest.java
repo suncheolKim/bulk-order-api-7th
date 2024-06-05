@@ -11,7 +11,6 @@ public class OrderEditRequest {
     private int quantity;
     private String customerName;
     private String customerAddress;
-    private DeliveryStatus status;
 
     public Order toOrder() {
         return Order.builder()
@@ -20,7 +19,7 @@ public class OrderEditRequest {
                 .quantity(quantity)
                 .customerName(customerName)
                 .customerAddress(customerAddress)
-                .status(status)
+                .status(DeliveryStatus.PREPARE)
                 .build();
     }
 }

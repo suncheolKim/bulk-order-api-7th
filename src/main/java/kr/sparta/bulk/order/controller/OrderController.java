@@ -1,11 +1,10 @@
 package kr.sparta.bulk.order.controller;
 
+import kr.sparta.bulk.order.dto.OrderDto;
 import kr.sparta.bulk.order.model.OrderCreateRequest;
 import kr.sparta.bulk.order.sample.SampleNewOrders;
 import kr.sparta.bulk.order.service.OrderService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,6 +14,11 @@ public class OrderController {
 
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
+    }
+
+    @GetMapping("/orders")
+    public List<OrderDto> getOrders() {
+        return orderService.getOrders();
     }
 
     @PostMapping("/sample/bulk-create")
@@ -28,5 +32,10 @@ public class OrderController {
     @PutMapping("/sample/bulk-edit")
     public int updateAllOrders() {
         return orderService.editOrders(/* 수정 대상은 사실상 외부에서 넘어와야 함 */);
+    }
+
+    @PatchMapping("/sample/bulk-change-status")
+    public int changeAllOrderStatus() {
+        return orderService.changeOrderStatus(/* 수정 대상은 사실상 외부에서 넘어와야 함 */);
     }
 }
