@@ -38,4 +38,9 @@ public class OrderController {
     public int changeToShipped() {
         return orderService.changeToShipped(/* 수정 대상은 사실상 외부에서 넘어와야 함 */);
     }
+
+    @PatchMapping("/sample/bulk-change-delivered")
+    public int changeToDelivered() {
+        return orderService.changeToDelivered(/* 수정 대상은 사실상 외부에서 넘어와야 함 */);
+    }
 }

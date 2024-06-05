@@ -3,6 +3,7 @@ package kr.sparta.bulk.order.service;
 import kr.sparta.bulk.order.dto.OrderDto;
 import kr.sparta.bulk.order.model.Order;
 import kr.sparta.bulk.order.model.OrderCreateRequest;
+import kr.sparta.bulk.order.process.OrderRandomToDeliveredProcessor;
 import kr.sparta.bulk.order.process.OrderRandomToShippedProcessor;
 import kr.sparta.bulk.order.process.OrderRandomCreateProcessor;
 import kr.sparta.bulk.order.process.OrderRandomEditProcessor;
@@ -50,6 +51,18 @@ public class OrderService {
         orderRepository.saveAll(statusChangedOrders);
 
         return statusChangedOrders.size();
+    }
+
+    public int changeToDelivered() {
+        // 원래는 외부에서 수정 대상을 받아야 하지만 interface 강의와 관계없는 내용이라 내부에서 조회하는 것으로 한다.
+        final List<Order> orderList = orderRepository.findAll();
+
+        final OrderRandomToDeliveredProcessor processor = new OrderRandomToDeliveredProcessor(orderList);
+        final List<Order> chageToDeliveredList = processor.getResult();
+
+        orderRepository.saveAll(chageToDeliveredList);
+
+        return chageToDeliveredList.size();
     }
 
     public List<OrderDto> getOrders() {

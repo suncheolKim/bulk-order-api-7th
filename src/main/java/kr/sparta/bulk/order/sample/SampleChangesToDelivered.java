@@ -11,9 +11,8 @@ import java.util.List;
 import java.util.random.RandomGenerator;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class SampleChangesToShipped extends SampleChangesDeliveryStatus {
-
+public class SampleChangesToDelivered extends SampleChangesDeliveryStatus {
     public static List<OrderChangeDeliveryStatusRequest> getRandomChageList(List<Order> orderList, List<Integer> targets) {
-        return getRandomChageList(orderList, targets, DeliveryStatus.SHIPPED);
+        return getRandomChageList(orderList, targets, DeliveryStatus.DELIVERED);
     }
 }
