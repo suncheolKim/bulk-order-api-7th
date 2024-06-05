@@ -1,7 +1,7 @@
 package kr.sparta.bulk.order.process;
 
 import kr.sparta.bulk.order.model.Order;
-import kr.sparta.bulk.order.model.OrderChangeRequest;
+import kr.sparta.bulk.order.model.OrderChangeDeliveryStatusRequest;
 import kr.sparta.bulk.order.sample.SampleChangesToShipped;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class OrderRandomToShippedProcessor implements OrderRandomProcessable{
         final List<Order> toShippedTargets = new ArrayList<>(orderList.size());
 
         final List<Integer> randomTargets = getRandomTargets();
-        final List<OrderChangeRequest> randomChageList = SampleChangesToShipped.getRandomChageList(orderList, randomTargets);
+        final List<OrderChangeDeliveryStatusRequest> randomChageList = SampleChangesToShipped.getRandomChageList(orderList, randomTargets);
 
         for (Order order: orderList) {
             randomChageList.stream()

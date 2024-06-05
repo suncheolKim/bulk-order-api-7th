@@ -6,18 +6,26 @@ import kr.sparta.bulk.order.model.OrderCreateRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderRandomCreateProcessor implements OrderRandomProcessable {
-    private final List<OrderCreateRequest> orderCreateRequests;
-
+public class OrderRandomCreateProcessor extends OrderBaseProcessor<OrderCreateRequest> {
     public OrderRandomCreateProcessor(List<OrderCreateRequest> orderCreateRequests) {
-        this.orderCreateRequests = orderCreateRequests;
+        super(orderCreateRequests);
+    }
+
+    @Override
+    protected long getMax() {
+        return list.size();
+    }
+
+    @Override
+    protected long getMin() {
+        return 0L;
     }
 
     @Override
     public List<Order> getResult() {
-        final List<Order> newOrders = new ArrayList<>(orderCreateRequests.size());
+        final List<Order> newOrders = new ArrayList<>(list.size());
 
-        for (OrderCreateRequest request : orderCreateRequests) {
+        for (OrderCreateRequest request : list) {
             final Order newOrder = request.toOrder();
             newOrders.add(newOrder);
         }

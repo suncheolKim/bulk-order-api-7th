@@ -40,7 +40,7 @@ public class OrderService {
         return editedOrders.size();
     }
 
-    public int changeOrderStatus() {
+    public int changeToShipped() {
         // 원래는 외부에서 수정 대상을 받아야 하지만 interface 강의와 관계없는 내용이라 내부에서 조회하는 것으로 한다.
         final List<Order> orderList = orderRepository.findAll();
 

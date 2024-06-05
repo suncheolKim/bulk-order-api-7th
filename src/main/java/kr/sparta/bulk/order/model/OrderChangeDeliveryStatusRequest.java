@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class OrderChangeRequest {
+public class OrderChangeDeliveryStatusRequest {
     private Long id;
     private DeliveryStatus status;
 

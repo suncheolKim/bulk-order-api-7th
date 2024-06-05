@@ -34,8 +34,8 @@ public class OrderController {
         return orderService.editOrders(/* 수정 대상은 사실상 외부에서 넘어와야 함 */);
     }
 
-    @PatchMapping("/sample/bulk-change-status")
-    public int changeAllOrderStatus() {
-        return orderService.changeOrderStatus(/* 수정 대상은 사실상 외부에서 넘어와야 함 */);
+    @PatchMapping("/sample/bulk-change-shipped")
+    public int changeToShipped() {
+        return orderService.changeToShipped(/* 수정 대상은 사실상 외부에서 넘어와야 함 */);
     }
 }
